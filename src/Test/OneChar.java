@@ -50,7 +50,7 @@ public class OneChar {
 		this.eachCharIndex = new int[3];
 		this.eachChar = new char[3];
 		for(int i=0;i<3;i++){
-			System.out.println("생성" +src.getEachCharIndex()[i]);
+//			System.out.println("생성" +src.getEachCharIndex()[i]);
 			this.eachChar[i] = src.getEachChar()[i];
 			this.eachCharIndex[i] = src.getEachCharIndex()[i];
 		}
@@ -61,7 +61,7 @@ public class OneChar {
 		eachCharIndex[0] = this.compareCHO(eachChar[0]);
 		eachCharIndex[1] = this.compareJUNG(eachChar[1]);
 		eachCharIndex[2] = this.compareJONG(eachChar[2]);
-		System.out.println(eachCharIndex[0]+"/"+eachCharIndex[1]+"/"+eachCharIndex[2]);
+//		System.out.println(eachCharIndex[0]+"/"+eachCharIndex[1]+"/"+eachCharIndex[2]);
 	} //글자에 각 char를 유니코드 값에 대응시켜 배열에 저장한다 
 	
 	public void setChar(){
@@ -71,7 +71,7 @@ public class OneChar {
 			return;
 		}
 		realChar = (char)((eachCharIndex[0]*CHOSUNG)+(eachCharIndex[1]*JUNGSUNG)+(eachCharIndex[2])+BASE_CODE);
-		System.out.println("글자 : "+realChar);
+//		System.out.println("글자 : "+realChar);
 	} //객체가 가지고 있는 모음 자음의 유니코드 값을 조합하여 글자를 만든다 
 	
 	public int[] getEachCharIndex() {
@@ -125,7 +125,7 @@ public class OneChar {
 		eachChar[1] = index;
 	}
 	public void setChong(char index){
-		System.out.println(index+"종성 ");
+//		System.out.println(index+"종성 ");
 		eachChar[2] = index;
 	}
 	//각각 자음 모음 받침을 저장하는 메소드들 
@@ -160,9 +160,9 @@ public class OneChar {
     }//자음인지 모음인지 종성인지 확인하는 메소드 그리고 char에 맞는 유니코드 값을 리턴 
     
 	public void printInform(){
-		System.out.println("글자 : " + realChar);
-		for(int i =0;i<3;i++){
-			System.out.println("자소 : " +eachChar[i]+ "인덱스 : " + eachCharIndex[i]);
-		} //그냥 객체의 멤버 변수가 잘 들어와있나 확인해보려고만든 메소드
+//		System.out.println("글자 : " + realChar);
+//		for(int i =0;i<3;i++){
+//			System.out.println("자소 : " +eachChar[i]+ "인덱스 : " + eachCharIndex[i]);
+//		} //그냥 객체의 멤버 변수가 잘 들어와있나 확인해보려고만든 메소드
 	}
 }

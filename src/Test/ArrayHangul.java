@@ -4,6 +4,8 @@ import java.util.*;
 
 
 
+
+
 public class ArrayHangul {
     private LinkedList<OneChar> sentence;
     private static StringBuilder input;
@@ -66,13 +68,69 @@ public class ArrayHangul {
 
    public static void main(String[] args) {
 
-      
-      while(true){
-    	  Scanner keyboard = new Scanner(System.in);
-    	  String line = keyboard.nextLine();
-    	  String item = getSentenceByOne(line);
-    	  System.out.println(item);
-      }
+		  ArrayHangul myLine = new ArrayHangul();
+		  
+		  int count = 0;
+		  while(true){
+			  
+		    String word = "";
+		    Random random = new Random(); //객체생성
+		    int choose  = random.nextInt(2);
+		    int index = 0;
+		
+		    switch (choose){
+		
+		        case 0:
+		        	index = random.nextInt(18);
+		            word = String.valueOf(CHOSUNG_LIST[index]);
+		            break;
+		        case 1:
+		        	index = random.nextInt(20);
+		            word = String.valueOf(JUNGSUNG_LIST[index]);
+		            break;
+		        case 2:
+		        	index = random.nextInt(27);
+		            word = String.valueOf(JONGSUNG_LIST[index]);
+		            break;
+		    }
+
+		    
+	        //char[] lineArr = line.toCharArray();
+	      
+//	      for(int i = 0; i<lineArr.length; i++)
+//	         System.out.print("lineArr:"+lineArr[i]);
+//	      
+	      //System.out.println();
+	      
+
+	      //myLine.setSentence(lineArr);
+	      
+	      //Iterator<OneChar> iterator = myLine.getSentence().iterator();
+	      //System.out.println();
+	      
+	      //while(iterator.hasNext()){
+	      //   OneChar temp = iterator.next();
+	         //System.out.print(temp.getRealChar());
+	      //}
+	      //System.out.println();
+
+		  count++;
+		      if(count % 50 == 49){
+		    	  String item = getSentenceByOne(word);//string 버전
+
+			      
+			      while(!myLine.getSentence().isEmpty())
+			    	  myLine.getSentence().removeLast();
+
+			      System.out.println(item.length()+" : "+item);
+		      }      
+		  }
+//      while(true){
+//    	  Scanner keyboard = new Scanner(System.in);
+//    	  String line = keyboard.nextLine();
+//    	  String item = getSentenceByOne(line);
+//    	  System.out.println(item);
+//      }
       
    }
    
@@ -92,7 +150,7 @@ public class ArrayHangul {
             if(pastInform ==1 ){ //이전에 입력된게 모음일 경우 
                //temp.setChong(lineArr[i]);
                if(i<lineArr.length-2){
-            	   System.out.println("@@!!!");
+//            	   System.out.println("@@!!!");
                   nextInform=compareChar(lineArr[i+1]);
                   if(nextInform==0){//자음 다음 들어온 문자가 또 자음일 경우
                      thirdInform=compareChar(lineArr[i+2]);
@@ -110,9 +168,9 @@ public class ArrayHangul {
                         OneChar aTemp = new OneChar(temp);
                         sentence.add(aTemp);
                         temp.clearChar();
-                        System.out.println("------------");
-                        temp.printInform();
-                        System.out.println("------------");
+//                        System.out.println("------------");
+//                        temp.printInform();
+//                        System.out.println("------------");
                      }
                   }
                   else{//자음 다음 들어온 문자가 모음일 경우
@@ -124,9 +182,9 @@ public class ArrayHangul {
                }
                //끝에 두개 남았을때는 아무것도 하지 않는다 
                else{
-            	   System.out.println("aaaaaaaaz");
+//            	   System.out.println("aaaaaaaaz");
                    if(temp.getEachChar()[0] == ' '){
-                	   System.out.println("aaa");
+//                	   System.out.println("aaa");
                 	   temp.setChosung(lineArr[i]);
                    }
                    else{
@@ -144,21 +202,21 @@ public class ArrayHangul {
          case 1 :
             //모음이 들어왔을 때
 //        	 System.out.println(temp.getEachChar()[0]+"@@@");
-        	 System.out.println(temp.getEachChar()[0]+"/"+temp.getEachChar()[1]+"/"+lineArr[i]+"/"+i);
+//        	 System.out.println(temp.getEachChar()[0]+"/"+temp.getEachChar()[1]+"/"+lineArr[i]+"/"+i);
             if(temp.getEachChar()[0] == ' '){
                 //지금 글자가 초성이 없을경우 
-            	System.out.println("초성없다 ");
+//            	System.out.println("초성없다 ");
                OneChar rTemp = sentence.removeLast();
                temp.setChosung(rTemp.getChong());
                //맨 마지막 글자를 빼서 받침을 다음 글자의 초성에 넣는다 
                rTemp.setChar();
                sentence.add(rTemp);
-               System.out.println(rTemp.getRealChar());
+//               System.out.println(rTemp.getRealChar());
                //수정한 맨 마지막 글자를 다시 넣어준다 
             } //지금 글자가 초성이 없을경우 
             if(temp.getEachChar()[1] == ' ' && pastInform!=1){
                temp.setJung(lineArr[i]);
-               System.out.println(lineArr[i]+"/"+i);
+//               System.out.println(lineArr[i]+"/"+i);
             }
             //모음이 비어있고 이전것이 모음이 아닐경우 모음을 글자에 넣어준다 
             break;
@@ -172,7 +230,7 @@ public class ArrayHangul {
          }
          pastInform = inform;
       }
-      temp.printInform();
+//      temp.printInform();
       temp.setChar();
       if(temp.getEachCharIndex()[0] !=-1 && temp.getEachCharIndex()[1] !=-1){
     	  if(temp.getEachCharIndex()[2] == -1){
@@ -195,7 +253,7 @@ public class ArrayHangul {
    public static String getSentence(String item){
 	   ArrayHangul ba = new ArrayHangul();
 	   input.append(item);
-	   System.out.println(input+"@@@");
+//	   System.out.println(input+"@@@");
 	   item = input.toString();
 	   item = item.replaceAll("\\s+","");
 	   
@@ -216,7 +274,7 @@ public class ArrayHangul {
 	            if(pastInform ==1 ){ //이전에 입력된게 모음일 경우 
 	               //temp.setChong(lineArr[i]);
 	               if(i<lineArr.length-2){
-	            	   System.out.println("@@!!!");
+//	            	   System.out.println("@@!!!");
 	                  nextInform=compareChar(lineArr[i+1]);
 	                  if(nextInform==0){//자음 다음 들어온 문자가 또 자음일 경우
 	                     thirdInform=compareChar(lineArr[i+2]);
@@ -235,9 +293,9 @@ public class ArrayHangul {
 	                        OneChar aTemp = new OneChar(temp);
 	                        ba.getSentence().add(aTemp);
 	                        temp.clearChar();
-	                        System.out.println("------------");
-	                        temp.printInform();
-	                        System.out.println("------------");
+//	                        System.out.println("------------");
+//	                        temp.printInform();
+//	                        System.out.println("------------");
 	                     }
 	                  }
 	                  else{//자음 다음 들어온 문자가 모음일 경우
@@ -249,9 +307,9 @@ public class ArrayHangul {
 	               }
 	               //끝에 두개 남았을때는 아무것도 하지 않는다 
 	               else{
-	            	   System.out.println("aaaaaaaaz");
+//	            	   System.out.println("aaaaaaaaz");
 	                   if(temp.getEachChar()[0] == ' '){
-	                	   System.out.println("aaa");
+//	                	   System.out.println("aaa");
 	                	   temp.setChosung(lineArr[i]);
 	                   }
 	                   else{
@@ -269,21 +327,21 @@ public class ArrayHangul {
 	         case 1 :
 	            //모음이 들어왔을 때
 //	        	 System.out.println(temp.getEachChar()[0]+"@@@");
-	        	 System.out.println(temp.getEachChar()[0]+"/"+temp.getEachChar()[1]+"/"+lineArr[i]+"/"+i);
+//	        	 System.out.println(temp.getEachChar()[0]+"/"+temp.getEachChar()[1]+"/"+lineArr[i]+"/"+i);
 	            if(temp.getEachChar()[0] == ' '){
 	                //지금 글자가 초성이 없을경우 
-	            	System.out.println("초성없다 ");
+//	            	System.out.println("초성없다 ");
 	               OneChar rTemp = ba.getSentence().removeLast();
 	               temp.setChosung(rTemp.getChong());
 	               //맨 마지막 글자를 빼서 받침을 다음 글자의 초성에 넣는다 
 	               rTemp.setChar();
 	               ba.getSentence().add(rTemp);
-	               System.out.println(rTemp.getRealChar());
+//	               System.out.println(rTemp.getRealChar());
 	               //수정한 맨 마지막 글자를 다시 넣어준다 
 	            } //지금 글자가 초성이 없을경우 
 	            if(temp.getEachChar()[1] == ' ' && pastInform!=1){
 	               temp.setJung(lineArr[i]);
-	               System.out.println(lineArr[i]+"/"+i);
+//	               System.out.println(lineArr[i]+"/"+i);
 	            }
 	            //모음이 비어있고 이전것이 모음이 아닐경우 모음을 글자에 넣어준다 
 	            break;
@@ -297,7 +355,7 @@ public class ArrayHangul {
 	         }
 	         pastInform = inform;
 	      }
-	      temp.printInform();
+//	      temp.printInform();
 	      temp.setChar();
 	      if(temp.getEachCharIndex()[0] !=-1 && temp.getEachCharIndex()[1] !=-1){
 	    	  if(temp.getEachCharIndex()[2] == -1){
@@ -342,13 +400,13 @@ public class ArrayHangul {
 	            if(pastInform ==1 ){ //이전에 입력된게 모음일 경우 
 	               //temp.setChong(lineArr[i]);
 	               if(i<lineArr.length-2){
-	            	   System.out.println("@@!!!");
+//	            	   System.out.println("@@!!!");
 	                  nextInform=compareChar(lineArr[i+1]);
 	                  if(nextInform==0){//자음 다음 들어온 문자가 또 자음일 경우
 	                     thirdInform=compareChar(lineArr[i+2]);
 	                     if(thirdInform==0){//세번 연속 자음이 들어올 경우
 	                        String doubleJong=String.valueOf(lineArr[i])+String.valueOf(lineArr[i+1]);
-	                        System.out.println(doubleJong+"@@@!@!@!@!2");
+//	                        System.out.println(doubleJong+"@@@!@!@!@!2");
 	                        temp.setChong(ba.makeDoubleJong(doubleJong).charAt(0));
 	                        temp.setChar();
 	                        OneChar aTemp = new OneChar(temp);
@@ -361,9 +419,9 @@ public class ArrayHangul {
 	                        OneChar aTemp = new OneChar(temp);
 	                        ba.getSentence().add(aTemp);
 	                        temp.clearChar();
-	                        System.out.println("------------");
-	                        temp.printInform();
-	                        System.out.println("------------");
+//	                        System.out.println("------------");
+//	                        temp.printInform();
+//	                        System.out.println("------------");
 	                     }
 	                  }
 	                  else{//자음 다음 들어온 문자가 모음일 경우
@@ -375,11 +433,11 @@ public class ArrayHangul {
 	               }
 	               //끝에 두개 남았을때는 아무것도 하지 않는다 
 	               else{
-	            	   System.out.println("aaaaaaa?????az");
+//	            	   System.out.println("aaaaaaa?????az");
 	                   if(temp.getEachChar()[0] == ' '){
-	                	   System.out.println("aaa");
+//	                	   System.out.println("aaa");
 	                	   temp.setChosung(lineArr[i]);
-	                	   System.out.println("여깁니다 ");
+//	                	   System.out.println("여깁니다 ");
 	                   }
 	                   else{
 	                	   
@@ -393,13 +451,13 @@ public class ArrayHangul {
 	            else{
 	            	if(i==0){
 	            		temp.setChosung(lineArr[i]);
-	            		System.out.println("첫초성 ");
+//	            		System.out.println("첫초성 ");
 	            	}
 	            	else{
 	            		OneChar rTemp = ba.getSentence().removeLast();
 		            	String doubleJong=ba.makeDoubleJong(String.valueOf(rTemp.getChong())+String.valueOf(lineArr[i]));
-		            	System.out.println(doubleJong+"@@@!@!@!@!");
-		            	System.out.println(doubleJong.length());
+//		            	System.out.println(doubleJong+"@@@!@!@!@!");
+//		            	System.out.println(doubleJong.length());
 		            	if(doubleJong.length()==1){
 		            		
 		            		rTemp.setChong(doubleJong.charAt(0));
@@ -421,10 +479,12 @@ public class ArrayHangul {
 	         case 1 :
 	            //모음이 들어왔을 때
 //	        	 System.out.println(temp.getEachChar()[0]+"@@@");
-	        	 System.out.println(temp.getEachChar()[0]+"/"+temp.getEachChar()[1]+"/"+lineArr[i]+"/"+i);
+//	        	 System.out.println(temp.getEachChar()[0]+"/"+temp.getEachChar()[1]+"/"+lineArr[i]+"/"+i);
 	            if(temp.getEachChar()[0] == ' '){
 	                //지금 글자가 초성이 없을경우 
-	            	System.out.println("초성없다 ");
+//	            	System.out.println("초성없다 ");
+	            	if(ba.getSentence().isEmpty())
+	            		continue;
 	               OneChar rTemp = ba.getSentence().removeLast();
 	               String tempChar = doubleJongMakeCho(rTemp.getChong());
 	               if(tempChar.length()<=1){
@@ -440,13 +500,13 @@ public class ArrayHangul {
 	               //맨 마지막 글자를 빼서 받침을 다음 글자의 초성에 넣는다 
 	               rTemp.setChar();
 	               ba.getSentence().add(rTemp);
-	               System.out.println(rTemp.getRealChar());
+//	               System.out.println(rTemp.getRealChar());
 	               //수정한 맨 마지막 글자를 다시 넣어준다 
 	               //여기서 이중모음이면 분해시켜서 다시 넣어주는 작업을 해야한다.
 	            } //지금 글자가 초성이 없을경우 
 	            if(temp.getEachChar()[1] == ' ' && pastInform!=1){
 	               temp.setJung(lineArr[i]);
-	               System.out.println(lineArr[i]+"/"+i);
+//	               System.out.println(lineArr[i]+"/"+i);
 	            }
 	            //모음이 비어있고 이전것이 모음이 아닐경우 모음을 글자에 넣어준다 
 	            break;
@@ -460,7 +520,7 @@ public class ArrayHangul {
 	         }
 	         pastInform = inform;
 	      }
-	      temp.printInform();
+//	      temp.printInform();
 	      temp.setChar();
 	      if(temp.getEachCharIndex()[0] !=-1 && temp.getEachCharIndex()[1] !=-1){
 	    	  if(temp.getEachCharIndex()[2] == -1){
