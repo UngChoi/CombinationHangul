@@ -190,80 +190,8 @@ public class ArrayHangul {
       }
       
    }
-   public String makeDoubleJong(String doubleJong){
-      if(doubleJong.equals("ㄱㅅ")){
-         return "ㄳ";
-      }
-      else if(doubleJong.equals("ㄴㅈ")){
-         return "ㄵ";
-      }
-      else if(doubleJong.equals("ㄴㅎ")){
-         return"ㄶ";
-      }
-      else if(doubleJong.equals("ㄹㄱ")){
-         return "ㄺ";
-      }
-      else if(doubleJong.equals("ㄹㅁ")){
-         return "ㄻ";
-      }
-      else if(doubleJong.equals("ㄹㅂ")){
-         return "ㄼ";
-      }
-      else if(doubleJong.equals("ㄹㅅ")){
-         return "ㄽ";
-      }
-      else if(doubleJong.equals("ㄹㅌ")){
-         return "ㄾ";
-      }
-      else if(doubleJong.equals("ㄹㅍ")){
-         return "ㄿ";
-      }
-      else if(doubleJong.equals("ㄹㅎ")){
-         return "ㅀ";
-      }
-      else if(doubleJong.equals("ㅂㅅ")){
-         return "ㅄ";
-      }
-      else 
-    	  return doubleJong;
-   } //자음 두개를 이중받침으로 바꿔주는 메소드
-   public static String doubleJongMakeCho(char doubleJong){
-	      if(doubleJong=='ㄳ'){
-	         return "ㄱㅅ";
-	      }
-	      else if(doubleJong=='ㄵ'){
-	         return "ㄴㅈ";
-	      }
-	      else if(doubleJong=='ㄶ'){
-	         return "ㄴㅎ";
-	      }
-	      else if(doubleJong=='ㄺ'){
-	         return "ㄹㄱ";
-	      }
-	      else if(doubleJong=='ㄻ'){
-	         return "ㄹㅁ";
-	      }
-	      else if(doubleJong=='ㄼ'){
-	         return "ㄹㅂ";
-	      }
-	      else if(doubleJong=='ㄽ'){
-	         return "ㄹㅅ";
-	      }
-	      else if(doubleJong=='ㄾ'){
-	         return "ㄹㅌ";
-	      }
-	      else if(doubleJong=='ㄿ'){
-	         return "ㄹㅍ";
-	      }
-	      else if(doubleJong=='ㅀ'){
-	         return "ㄹㅎ";
-	      }
-	      else if(doubleJong=='ㅄ'){//(doubleJong.equals("ㅂㅅ"))
-	         return "ㅂㅅ";
-	      }
-	      else 
-	    	  return Character.valueOf(doubleJong).toString();
-	   }
+
+ 
    public static String getSentence(String item){
 	   ArrayHangul ba = new ArrayHangul();
 	   input.append(item);
@@ -550,5 +478,80 @@ public class ArrayHangul {
 	      }
 	      return returnItem.toString();
 	   }
-   //자음 모음을 하나씩 입력해서 조합하는 메소드 
+   //자음 모음을 하나씩 입력해서 조합하는 메소드
+   
+   public String makeDoubleJong(String doubleJong){
+	      if(doubleJong.equals("ㄱㅅ")){
+	         return "ㄳ";
+	      }
+	      else if(doubleJong.equals("ㄴㅈ")){
+	         return "ㄵ";
+	      }
+	      else if(doubleJong.equals("ㄴㅎ")){
+	         return"ㄶ";
+	      }
+	      else if(doubleJong.equals("ㄹㄱ")){
+	         return "ㄺ";
+	      }
+	      else if(doubleJong.equals("ㄹㅁ")){
+	         return "ㄻ";
+	      }
+	      else if(doubleJong.equals("ㄹㅂ")){
+	         return "ㄼ";
+	      }
+	      else if(doubleJong.equals("ㄹㅅ")){
+	         return "ㄽ";
+	      }
+	      else if(doubleJong.equals("ㄹㅌ")){
+	         return "ㄾ";
+	      }
+	      else if(doubleJong.equals("ㄹㅍ")){
+	         return "ㄿ";
+	      }
+	      else if(doubleJong.equals("ㄹㅎ")){
+	         return "ㅀ";
+	      }
+	      else if(doubleJong.equals("ㅂㅅ")){
+	         return "ㅄ";
+	      }
+	      else 
+	    	  return doubleJong;
+	   } //자음 두개를 이중받침으로 바꿔주는 메소드
+   public static String doubleJongMakeCho(char doubleJong){
+	      if(doubleJong=='ㄳ'){
+	         return "ㄱㅅ";
+	      }
+	      else if(doubleJong=='ㄵ'){
+	         return "ㄴㅈ";
+	      }
+	      else if(doubleJong=='ㄶ'){
+	         return "ㄴㅎ";
+	      }
+	      else if(doubleJong=='ㄺ'){
+	         return "ㄹㄱ";
+	      }
+	      else if(doubleJong=='ㄻ'){
+	         return "ㄹㅁ";
+	      }
+	      else if(doubleJong=='ㄼ'){
+	         return "ㄹㅂ";
+	      }
+	      else if(doubleJong=='ㄽ'){
+	         return "ㄹㅅ";
+	      }
+	      else if(doubleJong=='ㄾ'){
+	         return "ㄹㅌ";
+	      }
+	      else if(doubleJong=='ㄿ'){
+	         return "ㄹㅍ";
+	      }
+	      else if(doubleJong=='ㅀ'){
+	         return "ㄹㅎ";
+	      }
+	      else if(doubleJong=='ㅄ'){//(doubleJong.equals("ㅂㅅ"))
+	         return "ㅂㅅ";
+	      }
+	      else 
+	    	  return String.valueOf(doubleJong);
+	   }
 }
